@@ -20,12 +20,24 @@ function addAnswer(code, user, book, chapiter, verse){
     userPoints.code.push(code);
     document.querySelector('#pts_cumule').innerHTML = userPoints.pts + ' pts';
     // return console.log(userPoints.code, user, userPoints.pts, 'added');
+    let newUser = true;
     listOfUsers.filter(theUser => {
         if(theUser.name === user) {
             theUser.code = userPoints.code;
             theUser.score = userPoints.pts;
+            newUser = false;
         }
     })
+    if(newUser){
+        listOfUsers.push(
+            {
+                name : user,
+                code : userPoints.code,
+                score : userPoints.pts,
+
+            }
+        );
+    }
     
     const json = JSON.stringify(listOfUsers);
     axios.put(sheetdb_url,json,{
