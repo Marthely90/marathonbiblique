@@ -221,3 +221,24 @@ class User {
       this.questions = questions;
     }
   }
+
+  function getExistUser(user) {
+      let teamPW;
+      axios.get(`${score_url}`)
+      .then( response => {
+          response.data.forEach(el => {
+              if(el.name === user.trim().toUpperCase()){
+                  userPassWord = true;
+                do{teamPW = prompt('Quel est votre Mot de passe ?')}while(!teamPW);
+                if(teamPW !== el.pass){
+                    alert("mot de passe incorrect");
+                    location.reload();
+                }
+            }
+        });
+        if(!userPassWord){
+            do{teamPW = prompt('Vous êtes nouveau ? créer un mot de passe')}while(!teamPW);
+            userPoints.pass = teamPW;
+        }
+    });
+  }

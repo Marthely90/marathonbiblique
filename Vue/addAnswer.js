@@ -34,6 +34,7 @@ function addAnswer(code, user, book, chapiter, verse){
                 name : user,
                 code : userPoints.code,
                 score : userPoints.pts,
+                pass : userPoints.pass,
 
             }
         );

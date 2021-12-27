@@ -1,9 +1,10 @@
 var team;
 const codeQuestion = document.querySelector('#codeQuestion'), book_feild = document.querySelector('#book_feild')
 var Question = document.querySelector('#Question')
-    var answeredCode = [], userPoints = {pts:0, code:[]}, bestPlayer = {score:0, name:''}, listOfUsers;
+    var answeredCode = [], userPoints = {pts:0, code:[], pass:''}, bestPlayer = {score:0, name:''}, listOfUsers, userPassWord;
 
-do{team = prompt('Quel est votre EQUIPE ?')}while(!team);
+do{team = prompt('Quel est votre identifiant ?')}while(!team);
+getExistUser(team);
 document.querySelector('#playerName').innerHTML = team.trim().toUpperCase();
 var InputName = document.querySelector("input[name='Pname']");
 InputName.value = team.trim().toUpperCase();
